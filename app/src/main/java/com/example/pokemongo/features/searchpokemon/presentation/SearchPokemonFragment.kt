@@ -1,5 +1,6 @@
 package com.example.pokemongo.features.searchpokemon.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -50,18 +51,24 @@ class SearchPokemonFragment : Fragment(R.layout.fragment_search_pokemon) {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun observe() {
         viewModel.isLoading.observe(viewLifecycleOwner) {
             viewBinding.cpiLoading.isVisible = it
         }
         viewModel.pokemon.observe(viewLifecycleOwner) {
-            viewBinding.tvName.text = it.name
-            viewBinding.tvBaseExperience.text = it.baseExperience.toString()
-            viewBinding.tvHeight.text = it.height.toString()
-            viewBinding.tvWeight.text = it.weight.toString()
+            viewBinding.tvName.text = getString(R.string.name) + " ${it.name}"
+            viewBinding.tvBaseExperience.text =
+                getString(R.string.base_experience) + " ${it.baseExperience}"
+            viewBinding.tvHeight.text = getString(R.string.height) + " ${it.height}"
+            viewBinding.tvWeight.text = getString(R.string.weight) + " ${it.weight}"
         }
         viewModel.showErrorEvent.observe(viewLifecycleOwner) {
-            Toast.makeText(requireContext(), "Ошибка в попе шишка", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.pokemon_not_found),
+                Toast.LENGTH_SHORT
+            )
                 .show()
         }
     }
