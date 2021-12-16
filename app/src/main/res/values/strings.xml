@@ -3,4 +3,10 @@
     <string name="go">GO</string>
     <string name="search_pokemon">Поиск покемона</string>
     <string name="random_pokemon">Случайный покемон</string>
+    <string name="input_name">Введите имя или id покемона</string>
+    <string name="search">Поиск</string>
+    <string name="name">Имя:</string>
+    <string name="base_experience">Базовый опыт:</string>
+    <string name="height">Рост:</string>
+    <string name="weight">Вес:</string>
 </resources>

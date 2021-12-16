@@ -5,10 +5,11 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.example.pokemongo.App
 import com.example.pokemongo.R
 import com.example.pokemongo.databinding.FragmentStartBinding
 
-class StartFragment: Fragment(R.layout.fragment_start) {
+class StartFragment : Fragment(R.layout.fragment_start) {
 
     private val viewBinding: FragmentStartBinding by viewBinding(FragmentStartBinding::bind)
 
