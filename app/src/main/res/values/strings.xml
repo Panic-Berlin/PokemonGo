@@ -10,4 +10,5 @@
     <string name="height">Рост:</string>
     <string name="weight">Вес:</string>
     <string name="pokemon_not_found">Покемон не найден</string>
+    <string name="add_favorite">Добавить в избранное</string>
 </resources>
