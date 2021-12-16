@@ -22,6 +22,9 @@ class SearchPokemonViewModel @Inject constructor(
     private val _isLoading = MutableLiveData(false)
     val isLoading get() = _isLoading.asLiveData()
 
+    private val _favoriteVisible = MutableLiveData(false)
+    val favoriteVisible get() = _favoriteVisible.asLiveData()
+
     val showErrorEvent = SingleLiveEvent<Unit>()
 
     fun getPokemon(name: String) {
@@ -29,7 +32,10 @@ class SearchPokemonViewModel @Inject constructor(
         viewModelScope.launch {
             when (val pokemon = pokemonGoInteractor.getPokemon(name)) {
                 is RequestResult.Failed.Error -> showErrorEvent.call()
-                is RequestResult.Success -> _pokemon.value = pokemon.data
+                is RequestResult.Success -> {
+                    _pokemon.value = pokemon.data
+                    _favoriteVisible.value = true
+                }
             }
             _isLoading.value = false
         }

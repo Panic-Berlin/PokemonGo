@@ -74,6 +74,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_height" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/margin_l"
+        android:background="@drawable/button_background"
+        android:layout_marginBottom="@dimen/margin_l"
+        android:textColor="@color/white"
+        android:text="@string/add_favorite"
+        android:textSize="@dimen/text_size_m"/>
+
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/cpi_loading"
         android:layout_width="wrap_content"
