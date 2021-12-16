@@ -9,5 +9,14 @@
         android:id="@+id/startFragment"
         android:name="com.example.pokemongo.features.start.presentation.StartFragment"
         android:label="StartFragment"
-        tools:layout="@layout/fragment_start"/>
+        tools:layout="@layout/fragment_start">
+        <action
+            android:id="@+id/action_startFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.pokemongo.features.menu.presentation.MenuFragment"
+        android:label="MenuFragment"
+        tools:layout="@layout/fragment_menu"/>
 </navigation>
