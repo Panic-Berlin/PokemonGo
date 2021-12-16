@@ -6,7 +6,7 @@ sealed class ViewState<out T> {
     data class Error(val throwable: Throwable) : ViewState<Nothing>()
 }
 
-fun <T> RequestResult<T>.asViewState(): ViewState<T> = when (this) {
+fun <T : Any> RequestResult<T>.asViewState(): ViewState<T> = when (this) {
     is RequestResult.Failed.Error -> ViewState.Error(throwable)
     is RequestResult.Success -> when {
         data == null -> ViewState.Empty

@@ -1,6 +1,5 @@
 package com.example.pokemongo.di
 
-import android.content.Context
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -15,7 +14,7 @@ class AppModule {
 
     @Singleton
     @Provides
-    fun provideOkhttp(applicationContext: Context): OkHttpClient =
+    fun provideOkhttp(): OkHttpClient =
         OkHttpClient.Builder()
         .apply {
             addInterceptor(HttpLoggingInterceptor().apply {
