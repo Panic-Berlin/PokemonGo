@@ -2,14 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/ic_pokemon_go">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_pokemon_go"/>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_go"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_background"
