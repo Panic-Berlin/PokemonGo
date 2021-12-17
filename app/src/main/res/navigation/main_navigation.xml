@@ -22,10 +22,18 @@
         <action
             android:id="@+id/action_menuFragment_to_searchPokemonFragment"
             app:destination="@id/searchPokemonFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_randomPokemonFragment"
+            app:destination="@id/randomPokemonFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchPokemonFragment"
         android:name="com.example.pokemongo.features.searchpokemon.presentation.SearchPokemonFragment"
         android:label="SearchPokemonFragment"
         tools:layout="@layout/fragment_search_pokemon"/>
+    <fragment
+        android:id="@+id/randomPokemonFragment"
+        android:name="com.example.pokemongo.features.randompokemon.presentation.RandomPokemonFragment"
+        android:label="RandomPokemonFragment"
+        tools:layout="@layout/fragment_random_pokemon"/>
 </navigation>
