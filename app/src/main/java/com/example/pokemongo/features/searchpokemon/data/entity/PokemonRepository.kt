@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 
 class PokemonRepository(private val pokemonDao: PokemonDao) {
 
-    val readAllData: LiveData<List<PokemonEntity>> = pokemonDao.readData()
+    val readAllData: LiveData<List<Pokemon>> = pokemonDao.readData()
 
-    suspend fun addPokemon(pokemon: PokemonEntity){
+    suspend fun addPokemon(pokemon: Pokemon){
         pokemonDao.addPokemon(pokemon)
     }
 }

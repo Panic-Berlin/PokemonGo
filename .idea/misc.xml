@@ -6,10 +6,12 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/drawable/button_background.xml" value="0.2703125" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/font/lato.xml" value="0.28" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/layout/fragment_favorite_pokemon.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/layout/fragment_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/layout/fragment_random_pokemon.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/layout/fragment_search_pokemon.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/layout/fragment_start.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/PokemonGo/app/src/main/res/layout/item_pokemon.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>

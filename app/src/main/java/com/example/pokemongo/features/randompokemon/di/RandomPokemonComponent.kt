@@ -1,5 +1,6 @@
 package com.example.pokemongo.features.randompokemon.di
 
+import android.content.Context
 import com.example.pokemongo.features.randompokemon.presentation.RandomPokemonFragment
 import dagger.BindsInstance
 import dagger.Component
@@ -20,6 +21,9 @@ interface RandomPokemonComponent {
 
         @BindsInstance
         fun retrofit(retrofit: Retrofit): Builder
+
+        @BindsInstance
+        fun context(context: Context): Builder
 
         fun build(): RandomPokemonComponent
     }

@@ -7,17 +7,13 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.pokemongo.R
 import com.example.pokemongo.appComponent
 import com.example.pokemongo.databinding.FragmentSearchPokemonBinding
 import com.example.pokemongo.factory.ViewModelFactory
 import com.example.pokemongo.features.searchpokemon.di.DaggerPokemonSearchComponent
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 class SearchPokemonFragment : Fragment(R.layout.fragment_search_pokemon) {
@@ -36,6 +32,7 @@ class SearchPokemonFragment : Fragment(R.layout.fragment_search_pokemon) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         DaggerPokemonSearchComponent.builder()
             .retrofit(appComponent.retrofit)
+            .context(appComponent.context)
             .build()
             .inject(this)
 
@@ -49,8 +46,13 @@ class SearchPokemonFragment : Fragment(R.layout.fragment_search_pokemon) {
         viewBinding.btnSearch.setOnClickListener {
             viewModel.getPokemon(viewBinding.etName.text.toString())
         }
-        viewBinding.btnFavorite.setOnClickListener {
 
+        viewBinding.btnFavorite.setOnClickListener {
+            viewModel.onAddFavoritePokemonClick()
+            val snackbar =
+                Snackbar.make(requireView(), getString(R.string.marked_as_favourite), 3000)
+            snackbar.anchorView = null
+            snackbar.show()
         }
     }
 
@@ -62,12 +64,12 @@ class SearchPokemonFragment : Fragment(R.layout.fragment_search_pokemon) {
         viewModel.isLoading.observe(viewLifecycleOwner) {
             viewBinding.cpiLoading.isVisible = it
         }
-        viewModel.pokemon.observe(viewLifecycleOwner) {
-            viewBinding.tvName.text = getString(R.string.name) + " ${it.name}"
+        viewModel.pokemon.observe(viewLifecycleOwner) { pokemonEntity ->
+            viewBinding.tvName.text = getString(R.string.name) + " ${pokemonEntity.name}"
             viewBinding.tvBaseExperience.text =
-                getString(R.string.base_experience) + " ${it.baseExperience}"
-            viewBinding.tvHeight.text = getString(R.string.height) + " ${it.height}"
-            viewBinding.tvWeight.text = getString(R.string.weight) + " ${it.weight}"
+                getString(R.string.base_experience) + " ${pokemonEntity.baseExperience}"
+            viewBinding.tvHeight.text = getString(R.string.height) + " ${pokemonEntity.height}"
+            viewBinding.tvWeight.text = getString(R.string.weight) + " ${pokemonEntity.weight}"
         }
         viewModel.showErrorEvent.observe(viewLifecycleOwner) {
             Toast.makeText(

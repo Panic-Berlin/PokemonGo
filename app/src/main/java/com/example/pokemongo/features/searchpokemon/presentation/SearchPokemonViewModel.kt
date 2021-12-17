@@ -1,18 +1,23 @@
 package com.example.pokemongo.features.searchpokemon.presentation
 
+import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokemongo.features.searchpokemon.data.entity.Pokemon
+import com.example.pokemongo.features.searchpokemon.data.entity.PokemonDataBase
+import com.example.pokemongo.features.searchpokemon.data.entity.PokemonRepository
 import com.example.pokemongo.features.searchpokemon.domain.PokemonGoInteractor
-import com.example.pokemongo.features.searchpokemon.domain.model.Pokemon
 import com.example.pokemongo.utils.RequestResult
 import com.example.pokemongo.utils.SingleLiveEvent
 import com.example.pokemongo.utils.asLiveData
-import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SearchPokemonViewModel @Inject constructor(
+    applicationContext: Context,
     private val pokemonGoInteractor: PokemonGoInteractor
 ) : ViewModel() {
 
@@ -27,6 +32,16 @@ class SearchPokemonViewModel @Inject constructor(
 
     val showErrorEvent = SingleLiveEvent<Unit>()
 
+    private val readAllData: LiveData<List<Pokemon>>
+    private val repository: PokemonRepository
+
+
+    init {
+        val pokemonDao = PokemonDataBase.getDataBase(context = applicationContext).pokemonDao()
+        repository = PokemonRepository(pokemonDao)
+        readAllData = repository.readAllData
+    }
+
     fun getPokemon(name: String) {
         _isLoading.value = true
         viewModelScope.launch {
@@ -38,6 +53,12 @@ class SearchPokemonViewModel @Inject constructor(
                 }
             }
             _isLoading.value = false
+        }
+    }
+
+    fun onAddFavoritePokemonClick() {
+        viewModelScope.launch(Dispatchers.IO) {
+            _pokemon.value?.let { repository.addPokemon(it) }
         }
     }
 }

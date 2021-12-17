@@ -11,4 +11,6 @@
     <string name="weight">Вес:</string>
     <string name="pokemon_not_found">Покемон не найден</string>
     <string name="add_favorite">Добавить в избранное</string>
+    <string name="favorites">Избрынные</string>
+    <string name="marked_as_favourite">Покемон добавлен в изрбранные</string>
 </resources>
