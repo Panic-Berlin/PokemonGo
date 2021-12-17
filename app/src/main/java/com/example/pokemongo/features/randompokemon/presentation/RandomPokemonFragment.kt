@@ -1,4 +1,4 @@
-package com.example.pokemongo.features.searchpokemon.presentation
+package com.example.pokemongo.features.randompokemon.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,57 +7,41 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.pokemongo.R
 import com.example.pokemongo.appComponent
-import com.example.pokemongo.databinding.FragmentSearchPokemonBinding
+import com.example.pokemongo.databinding.FragmentRandomPokemonBinding
 import com.example.pokemongo.factory.ViewModelFactory
-import com.example.pokemongo.features.searchpokemon.di.DaggerPokemonSearchComponent
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import com.example.pokemongo.features.randompokemon.di.DaggerRandomPokemonComponent
 import javax.inject.Inject
 
-class SearchPokemonFragment : Fragment(R.layout.fragment_search_pokemon) {
+class RandomPokemonFragment: Fragment(R.layout.fragment_random_pokemon) {
 
-    private val viewBinding: FragmentSearchPokemonBinding by viewBinding(
-        FragmentSearchPokemonBinding::bind
-    )
-
+    private val viewBinding: FragmentRandomPokemonBinding by viewBinding(FragmentRandomPokemonBinding::bind)
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    private val viewModel: SearchPokemonViewModel by viewModels(
+    private val viewModel: RandomPokemonViewModel by viewModels(
         factoryProducer = { viewModelFactory }
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        DaggerPokemonSearchComponent.builder()
+        super.onViewCreated(view, savedInstanceState)
+        DaggerRandomPokemonComponent.builder()
             .retrofit(appComponent.retrofit)
             .build()
             .inject(this)
-
-        super.onViewCreated(view, savedInstanceState)
 
         initViews()
         observe()
     }
 
-    private fun initViews() {
-        viewBinding.btnSearch.setOnClickListener {
-            viewModel.getPokemon(viewBinding.etName.text.toString())
-        }
-        viewBinding.btnFavorite.setOnClickListener {
-
-        }
-    }
-
     @SuppressLint("SetTextI18n")
     private fun observe() {
-        viewModel.favoriteVisible.observe(viewLifecycleOwner){
+        val random = (0..899).random()
+        viewModel.getPokemon(random.toString())
+        viewModel.btnVisible.observe(viewLifecycleOwner){
             viewBinding.btnFavorite.isVisible = it
+            viewBinding.btnRandomPokemon.isVisible = it
         }
         viewModel.isLoading.observe(viewLifecycleOwner) {
             viewBinding.cpiLoading.isVisible = it
@@ -76,6 +60,17 @@ class SearchPokemonFragment : Fragment(R.layout.fragment_search_pokemon) {
                 Toast.LENGTH_SHORT
             )
                 .show()
+        }
+    }
+
+    private fun initViews() {
+        viewBinding.btnFavorite.setOnClickListener {
+
+        }
+
+        viewBinding.btnRandomPokemon.setOnClickListener {
+            val random = (0..899).random()
+            viewModel.getPokemon(random.toString())
         }
     }
 }

@@ -1,30 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xxs"
-        android:hint="@string/input_name"
-        app:layout_constraintEnd_toStartOf="@id/btn_search"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xxs"
-        android:background="@drawable/button_background"
-        android:text="@string/search"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/tv_name"
@@ -32,11 +11,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_xs"
         android:layout_marginTop="@dimen/margin_xs"
-        tools:text="@string/name"
         android:textColor="@color/green"
         android:textSize="@dimen/text_size_l"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_name" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/name" />
 
     <TextView
         android:id="@+id/tv_base_experience"
@@ -44,11 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_xs"
         android:layout_marginTop="@dimen/margin_xs"
-        tools:text="@string/base_experience"
         android:textColor="@color/green"
         android:textSize="@dimen/text_size_l"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_name"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_name"
+        tools:text="@string/base_experience" />
 
     <TextView
         android:id="@+id/tv_height"
@@ -56,11 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_xs"
         android:layout_marginTop="@dimen/margin_xs"
-        tools:text="@string/height"
         android:textColor="@color/green"
         android:textSize="@dimen/text_size_l"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_base_experience" />
+        app:layout_constraintTop_toBottomOf="@id/tv_base_experience"
+        tools:text="@string/height" />
 
     <TextView
         android:id="@+id/tv_weight"
@@ -68,25 +47,39 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_xs"
         android:layout_marginTop="@dimen/margin_xs"
-        tools:text="@string/weight"
         android:textColor="@color/green"
         android:textSize="@dimen/text_size_l"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_height" />
+        app:layout_constraintTop_toBottomOf="@id/tv_height"
+        tools:text="@string/weight" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_random_pokemon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_l"
+        android:layout_marginBottom="@dimen/margin_l"
+        android:background="@drawable/button_background"
+        android:text="@string/random_pokemon"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_m"
+        app:layout_constraintBottom_toTopOf="@+id/btn_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_favorite"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginHorizontal="@dimen/margin_l"
-        android:background="@drawable/button_background"
         android:layout_marginBottom="@dimen/margin_l"
-        android:textColor="@color/white"
+        android:background="@drawable/button_background"
         android:text="@string/add_favorite"
-        android:textSize="@dimen/text_size_m"/>
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_m"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/cpi_loading"
