@@ -26,5 +26,9 @@ class MenuFragment: Fragment(R.layout.fragment_menu) {
         viewBinding.btnRandomPokemon.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_randomPokemonFragment)
         }
+
+        viewBinding.btnFavoritePokemon.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_favoritePokemonFragment)
+        }
     }
 }

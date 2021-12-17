@@ -4,9 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "pokemon_table")
-data class PokemonEntity(
+data class Pokemon(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Long,
     val baseExperience: Int,
     val height: Int,
     val name: String,

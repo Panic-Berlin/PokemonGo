@@ -10,8 +10,8 @@ import androidx.room.Query
 interface PokemonDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addPokemon(pokemon: PokemonEntity)
+    suspend fun addPokemon(pokemon: Pokemon)
 
     @Query("SELECT * FROM pokemon_table ORDER BY id ASC")
-    fun readData(): LiveData<List<PokemonEntity>>
+    fun readData(): LiveData<List<Pokemon>>
 }

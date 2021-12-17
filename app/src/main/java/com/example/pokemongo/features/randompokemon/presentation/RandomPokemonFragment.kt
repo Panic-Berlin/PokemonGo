@@ -13,6 +13,7 @@ import com.example.pokemongo.appComponent
 import com.example.pokemongo.databinding.FragmentRandomPokemonBinding
 import com.example.pokemongo.factory.ViewModelFactory
 import com.example.pokemongo.features.randompokemon.di.DaggerRandomPokemonComponent
+import com.google.android.material.snackbar.Snackbar
 import javax.inject.Inject
 
 class RandomPokemonFragment: Fragment(R.layout.fragment_random_pokemon) {
@@ -28,6 +29,7 @@ class RandomPokemonFragment: Fragment(R.layout.fragment_random_pokemon) {
         super.onViewCreated(view, savedInstanceState)
         DaggerRandomPokemonComponent.builder()
             .retrofit(appComponent.retrofit)
+            .context(appComponent.context)
             .build()
             .inject(this)
 
@@ -65,7 +67,11 @@ class RandomPokemonFragment: Fragment(R.layout.fragment_random_pokemon) {
 
     private fun initViews() {
         viewBinding.btnFavorite.setOnClickListener {
-
+            viewModel.onAddFavoritePokemonClick()
+            val snackbar =
+                Snackbar.make(requireView(), getString(R.string.marked_as_favourite), 3000)
+            snackbar.anchorView = null
+            snackbar.show()
         }
 
         viewBinding.btnRandomPokemon.setOnClickListener {

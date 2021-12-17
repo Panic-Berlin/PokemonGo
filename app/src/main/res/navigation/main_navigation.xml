@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_menuFragment_to_randomPokemonFragment"
             app:destination="@id/randomPokemonFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_favoritePokemonFragment"
+            app:destination="@id/favoritePokemonFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchPokemonFragment"
@@ -36,4 +39,9 @@
         android:name="com.example.pokemongo.features.randompokemon.presentation.RandomPokemonFragment"
         android:label="RandomPokemonFragment"
         tools:layout="@layout/fragment_random_pokemon"/>
+    <fragment
+        android:id="@+id/favoritePokemonFragment"
+        android:name="com.example.pokemongo.features.favorites.presentation.FavoritePokemonFragment"
+        android:label="FavoritePokemonFragment"
+        tools:layout="@layout/fragment_favorite_pokemon"/>
 </navigation>

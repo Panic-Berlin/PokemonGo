@@ -1,7 +1,7 @@
 package com.example.pokemongo.features.searchpokemon.data.model.mapper
 
+import com.example.pokemongo.features.searchpokemon.data.entity.Pokemon
 import com.example.pokemongo.features.searchpokemon.data.model.PokemonRes
-import com.example.pokemongo.features.searchpokemon.domain.model.Pokemon
 import javax.inject.Inject
 
 class PokemonGoMapper @Inject constructor() {
@@ -10,6 +10,7 @@ class PokemonGoMapper @Inject constructor() {
         baseExperience = pokemonRes.baseExperience,
         height = pokemonRes.height,
         name = pokemonRes.name,
-        weight = pokemonRes.weight
+        weight = pokemonRes.weight,
+        id = pokemonRes.id
     )
 }
